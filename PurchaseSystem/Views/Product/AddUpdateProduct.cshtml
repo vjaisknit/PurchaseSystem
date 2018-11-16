@@ -1,0 +1,75 @@
+﻿@model PurchaseSystem.DTO.ProductMstDTO
+
+@{
+    ViewBag.Title = "AddUpdateProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddUpdateProduct</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ProductMst</h4>
+      
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.productMst.fk_prodtypeid, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(
+
+               model => model.productMst.fk_prodtypeid,
+               new SelectList(Model.ProductTypeMstList, "pk_prodtypeid", "Description",0),"--Select Product Type--",
+               new { @class = "form-control" } 
+               
+               )
+                @Html.ValidationMessageFor(model => model.productMst.fk_prodtypeid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.productMst.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.productMst.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.productMst.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.productMst.oriPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.productMst.oriPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.productMst.oriPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.productMst.sellingUpToPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.productMst.sellingUpToPrice, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.productMst.sellingUpToPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.productMst.productQuantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.productMst.productQuantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.productMst.productQuantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model=>model.productMst.pk_ProductId)
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
