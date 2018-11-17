@@ -26,7 +26,7 @@ namespace PurchaseSystem.Controllers
         public ActionResult ProductList()
         {
            
-            return View(_db.ProductMsts.ToList());
+          return View(_db.ProductMsts.ToList());
         }
         [HttpPost]
         public ActionResult AddUpdateProduct(ProductMstDTO product)
