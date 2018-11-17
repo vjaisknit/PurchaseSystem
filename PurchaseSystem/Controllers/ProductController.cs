@@ -34,6 +34,8 @@ namespace PurchaseSystem.Controllers
             _db.ProductMsts.Add(product.productMst);
             _db.SaveChanges();
             return RedirectToAction("ProductList");
+
+
         }
 
 
