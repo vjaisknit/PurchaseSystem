@@ -1,0 +1,29 @@
+﻿@model PurchaseSystem.Common.ProductTypeMst
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("CreateUpdateForm", "productType"))
+{
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(a => a.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(a => a.Description, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        @Html.HiddenFor(a=>a.pk_prodtypeid)
+        <div class="form-control-static">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+        </div>
+    </div>
+
+}
+
+

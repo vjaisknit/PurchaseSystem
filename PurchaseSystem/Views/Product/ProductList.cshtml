@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PurchaseSystem.Common.ProductMst>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pk_ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fk_prodtypeid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.oriPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sellingUpToPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.productQuantity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pk_ProductId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fk_prodtypeid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.oriPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sellingUpToPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.productQuantity)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
