@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PurchaseSystem.Common.ProductMst>
+﻿@model IEnumerable<PurchaseSystem.DTO.ProductListDTO>
 
 @{
     ViewBag.Title = "ProductList";
@@ -8,15 +8,13 @@
 <h2>ProductList</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "AddUpdateProduct")
 </p>
 <table class="table">
     <tr>
+       
         <th>
-            @Html.DisplayNameFor(model => model.pk_ProductId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fk_prodtypeid)
+            @Html.DisplayNameFor(model => model.productType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
@@ -35,11 +33,9 @@
 
 @foreach (var item in Model) {
     <tr>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.pk_ProductId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fk_prodtypeid)
+            @Html.DisplayFor(modelItem => item.productType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProductName)
@@ -54,9 +50,9 @@
             @Html.DisplayFor(modelItem => item.productQuantity)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new {  id=item.pk_ProductId  }) |
+          
+            @Html.ActionLink("Delete", "Delete", new { id=item.pk_ProductId })
         </td>
     </tr>
 }

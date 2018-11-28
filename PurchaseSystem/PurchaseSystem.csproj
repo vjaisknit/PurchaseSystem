@@ -206,6 +206,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\productTypeController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="DTO\ProductListDTO.cs" />
     <Compile Include="DTO\ProductMstDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +220,10 @@
     <Compile Include="Migrations\201811151431091_AddProductMst.Designer.cs">
       <DependentUpon>201811151431091_AddProductMst.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811281433108_add-Authentication.cs" />
+    <Compile Include="Migrations\201811281433108_add-Authentication.Designer.cs">
+      <DependentUpon>201811281433108_add-Authentication.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -226,7 +232,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap-cerulean.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -289,6 +295,8 @@
     <Content Include="Views\productType\Create.cshtml" />
     <Content Include="Views\Product\AddUpdateProduct.cshtml" />
     <Content Include="Views\Product\ProductList.cshtml" />
+    <Content Include="Views\Role\CreateRole.cshtml" />
+    <Content Include="Views\Role\RoleList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811151431091_AddProductMst.resx">
       <DependentUpon>201811151431091_AddProductMst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281433108_add-Authentication.resx">
+      <DependentUpon>201811281433108_add-Authentication.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

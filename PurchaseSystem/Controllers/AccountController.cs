@@ -17,7 +17,7 @@ namespace PurchaseSystem.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        ApplicationDbContext _db = new ApplicationDbContext();
         public AccountController()
         {
         }
@@ -139,6 +139,7 @@ namespace PurchaseSystem.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Name = new SelectList(_db.Roles.ToList(), "Name", "Name");
             return View();
         }
 
@@ -155,6 +156,7 @@ namespace PurchaseSystem.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await UserManager.AddToRoleAsync(user.Id, model.Name);
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
