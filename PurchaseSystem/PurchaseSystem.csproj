@@ -297,6 +297,9 @@
     <Content Include="Views\Product\ProductList.cshtml" />
     <Content Include="Views\Role\CreateRole.cshtml" />
     <Content Include="Views\Role\RoleList.cshtml" />
+    <Content Include="Views\Shared\_Admin.cshtml" />
+    <Content Include="Views\Shared\_General.cshtml" />
+    <Content Include="Views\Shared\_Cloth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
