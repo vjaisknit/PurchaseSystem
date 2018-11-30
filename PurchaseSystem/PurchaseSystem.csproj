@@ -199,14 +199,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\ModuleMst.cs" />
     <Compile Include="Common\ProductMst.cs" />
     <Compile Include="Common\ProductTypeMst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\productTypeController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\UserHomeController.cs" />
     <Compile Include="DTO\ProductListDTO.cs" />
     <Compile Include="DTO\ProductMstDTO.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,6 +227,10 @@
     <Compile Include="Migrations\201811281433108_add-Authentication.Designer.cs">
       <DependentUpon>201811281433108_add-Authentication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811301432497_AddModule.cs" />
+    <Compile Include="Migrations\201811301432497_AddModule.Designer.cs">
+      <DependentUpon>201811301432497_AddModule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -234,10 +241,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-cerulean.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\card.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Cloth.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -300,6 +309,9 @@
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Shared\_General.cshtml" />
     <Content Include="Views\Shared\_Cloth.cshtml" />
+    <Content Include="Views\Module\CreateModule.cshtml" />
+    <Content Include="Views\Module\ModuleList.cshtml" />
+    <Content Include="Views\UserHome\DisplayModule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811281433108_add-Authentication.resx">
       <DependentUpon>201811281433108_add-Authentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811301432497_AddModule.resx">
+      <DependentUpon>201811301432497_AddModule.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

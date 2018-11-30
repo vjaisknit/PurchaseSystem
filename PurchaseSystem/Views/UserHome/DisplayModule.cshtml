@@ -1,0 +1,29 @@
+﻿@model IEnumerable<PurchaseSystem.Common.ModuleMst>
+
+@{
+    ViewBag.Title = "DisplayModule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/card.css" rel="stylesheet" />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4" style="margin-top:50px">
+            <div class="w3-container">
+                <div class="w3-card-4">
+                    <header class="w3-container w3-light-grey">
+                        <h5>@item.ModuleName</h5>
+                    </header>
+                    <div class="w3-container">
+                        <img src="@Html.Raw(item.ImgUrl)" style="height:100px;
+                        margin-left:30px" class="w3-left w3-circle w3-margin-right" />
+                    </div>
+                    @Html.ActionLink(item.ModuleName, item.ActionName.Trim(), item.ControllerName, null,
+            new { @class = "w3-button w3-block w3-dark-grey" })
+                </div>
+                <br />
+                <br />
+            </div>
+        </div>}
+</div>
