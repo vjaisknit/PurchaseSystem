@@ -8,12 +8,14 @@ using System.Web.Mvc;
 
 namespace PurchaseSystem.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
        
             ApplicationDbContext _db = new ApplicationDbContext();
-            // GET: Role
-            public ActionResult RoleList()
+        // GET: Role
+      
+        public ActionResult RoleList()
             {
                 var roleList = _db.Roles.ToList();
                 return View(roleList);
