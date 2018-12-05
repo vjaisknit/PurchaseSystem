@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace PurchaseSystem.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")] 
     public class RoleController : Controller
     {
        
