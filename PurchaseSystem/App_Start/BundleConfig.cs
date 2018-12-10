@@ -9,7 +9,10 @@ namespace PurchaseSystem
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                       "~/Scripts/DataTables/jquery.datatables.js",
+                      "~/Scripts/DataTables/datatables.bootstrap.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -25,7 +28,9 @@ namespace PurchaseSystem
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-cerulean.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/DataTables/css/datatables.bootstrap.css"));
+            
         }
     }
 }

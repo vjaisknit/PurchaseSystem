@@ -7,54 +7,80 @@
 
 <h2>ProductList</h2>
 
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#tblProduct').DataTable({
+
+            });
+
+        });
+    </script>
+}
+
 <p>
     @Html.ActionLink("Create New", "AddUpdateProduct")
 </p>
-<table class="table">
-    <tr>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.productType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.oriPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.sellingUpToPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.productQuantity)
-        </th>
-        <th></th>
-    </tr>
+<table id="tblProduct" class="table">
+    <thead>
+        <tr>
 
-@foreach (var item in Model) {
-    <tr>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.productType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.oriPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.sellingUpToPrice)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productQuantity)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.pk_ProductId  }) |
-          
-            @Html.ActionLink("Delete", "Delete", new { id=item.pk_ProductId })
-        </td>
-    </tr>
-}
+            <th>
 
+                productType
+            </th>
+            <th>
+                ProductName
+
+            </th>
+            <th>
+                ProductName
+
+            </th>
+            <th>
+                sellingUpToPrice
+
+            </th>
+            <th>
+                productQuantity
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.productType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.oriPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sellingUpToPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.productQuantity)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.pk_ProductId }) |
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.pk_ProductId })
+                </td>
+            </tr>
+
+        }
+    </tbody>
 </table>
+
+
+
+
+
