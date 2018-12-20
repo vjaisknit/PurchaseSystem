@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace PurchaseSystem.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         ApplicationDbContext _db = new ApplicationDbContext();
@@ -26,7 +27,10 @@ namespace PurchaseSystem.Controllers
 
         public ActionResult ProductList()
         {
-            var ProductList = from a in _db.ProductMsts
+            IEnumerable<ProductListDTO> ProductList;
+            if (User.IsInRole("Admin"))
+            {
+                ProductList = from a in _db.ProductMsts
                               join b in _db.ProductTypeMsts on a.fk_prodtypeid equals b.pk_prodtypeid
                               select new ProductListDTO
                               {
@@ -37,7 +41,23 @@ namespace PurchaseSystem.Controllers
                                   productQuantity = a.productQuantity,
                                   sellingUpToPrice = a.sellingUpToPrice
                               };
+            }
+            else
+            {
+                ProductList = from a in _db.ProductMsts
+                              join b in _db.ProductTypeMsts on a.fk_prodtypeid equals b.pk_prodtypeid
+                              where a.username==User.Identity.Name
+                              select new ProductListDTO
+                              {
+                                  pk_ProductId = a.pk_ProductId,
+                                  productType = b.Description,
+                                  ProductName = a.ProductName,
+                                  oriPrice = a.oriPrice,
+                                  productQuantity = a.productQuantity,
+                                  sellingUpToPrice = a.sellingUpToPrice
+                              };
 
+            }
             return View(ProductList);
         }
 
@@ -68,12 +88,14 @@ namespace PurchaseSystem.Controllers
         {
             if(product.productMst.pk_ProductId==0)
             {
+                product.productMst.username=  User.Identity.Name;
                 _db.ProductMsts.Add(product.productMst);
                 _db.SaveChanges();
             }
             else
             {
                 var dataInDb= _db.ProductMsts.FirstOrDefault(a => a.pk_ProductId == product.productMst.pk_ProductId);
+
                 dataInDb.fk_prodtypeid = product.productMst.fk_prodtypeid;
                 dataInDb.ProductName = product.productMst.ProductName;
                 dataInDb.productQuantity = product.productMst.productQuantity;

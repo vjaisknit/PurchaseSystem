@@ -9,7 +9,8 @@ namespace PurchaseSystem.Common
     public class ProductMst
     {
          [Key]
-        public int pk_ProductId { get; set; }  
+        public int pk_ProductId { get; set; }
+        public string username { get; set; }
 
         public int fk_prodtypeid { get; set; }
 
