@@ -199,11 +199,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\CustomerMst.cs" />
     <Compile Include="Common\CustomRoles.cs" />
     <Compile Include="Common\ModuleMst.cs" />
     <Compile Include="Common\ProductMst.cs" />
     <Compile Include="Common\ProductTypeMst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
@@ -235,6 +237,10 @@
     <Compile Include="Migrations\201812201443548_AddUserName.cs" />
     <Compile Include="Migrations\201812201443548_AddUserName.Designer.cs">
       <DependentUpon>201812201443548_AddUserName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901051540548_addCustomer.cs" />
+    <Compile Include="Migrations\201901051540548_addCustomer.Designer.cs">
+      <DependentUpon>201901051540548_addCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -490,6 +496,8 @@
     <Content Include="Views\Module\CreateModule.cshtml" />
     <Content Include="Views\Module\ModuleList.cshtml" />
     <Content Include="Views\UserHome\DisplayModule.cshtml" />
+    <Content Include="Views\Customer\SaveUpdateCustomer.cshtml" />
+    <Content Include="Views\Customer\CustomerList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -522,6 +530,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812201443548_AddUserName.resx">
       <DependentUpon>201812201443548_AddUserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901051540548_addCustomer.resx">
+      <DependentUpon>201901051540548_addCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
