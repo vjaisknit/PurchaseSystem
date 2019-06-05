@@ -205,6 +205,7 @@
     <Compile Include="Common\ProductMst.cs" />
     <Compile Include="Common\ProductTypeMst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ComBillController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -213,6 +214,8 @@
     <Compile Include="Controllers\productTypeController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserHomeController.cs" />
+    <Compile Include="DTO\Com_Bill_DTO.cs" />
+    <Compile Include="DTO\ProductDDD_DTO.cs" />
     <Compile Include="DTO\ProductListDTO.cs" />
     <Compile Include="DTO\ProductMstDTO.cs" />
     <Compile Include="Global.asax.cs">
@@ -498,6 +501,7 @@
     <Content Include="Views\UserHome\DisplayModule.cshtml" />
     <Content Include="Views\Customer\SaveUpdateCustomer.cshtml" />
     <Content Include="Views\Customer\CustomerList.cshtml" />
+    <Content Include="Views\ComBill\SaveUpdateBill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

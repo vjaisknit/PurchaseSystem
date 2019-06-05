@@ -37,6 +37,9 @@
                     @Html.DisplayFor(modelItem => item.MobNo)
                 </td>
                 <td>
+
+                    @Html.ActionLink("Select", "SaveUpdateBill", "ComBill",new { id=item.pk_Custid},new {@class ="btn btn-primary"})
+
                     @Html.ActionLink("Edit", "Edit", new { id = item.pk_Custid }) |
 
                     @Html.ActionLink("Delete", "Delete", new { id = item.pk_Custid })
