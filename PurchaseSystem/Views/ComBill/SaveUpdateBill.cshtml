@@ -12,8 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Com_Bill_DTO</h4>
-        <hr />
+       
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
        
         <div class="alert alert-dismissible alert-success" style="height:50px">
@@ -33,7 +32,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Fk_ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Fk_ProductId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Fk_ProductId,new SelectList(Model.ProductList, "productId", "ProductName"), "--Select product--", new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Fk_ProductId, "", new { @class = "text-danger" })
             </div>
         </div>

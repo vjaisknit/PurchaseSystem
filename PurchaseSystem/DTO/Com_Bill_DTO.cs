@@ -8,6 +8,10 @@ namespace PurchaseSystem.DTO
 {
     public class Com_Bill_DTO
     {
+        public Com_Bill_DTO()
+        {
+            ProductList = new List<ProductDDD_DTO>();
+        }
         public int pk_tempbillid { get; set; }
 
         public int Fk_ProductId { get; set; }

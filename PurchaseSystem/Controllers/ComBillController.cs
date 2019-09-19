@@ -23,19 +23,39 @@ namespace PurchaseSystem.Controllers
             return View();
         }
 
+        public Com_Bill_DTO GetPageData()
+        {
+            Com_Bill_DTO comBill = new Com_Bill_DTO();
+            if (User.IsInRole("Admin"))
+            {
+                var prodList = from productList in _db.ProductMsts
+                               select new ProductDDD_DTO
+                               {
+                                   productId = productList.pk_ProductId,
+                                   ProductName = productList.ProductName
+                               };
+                comBill.ProductList = prodList.ToList();
+               
+
+            }
+            
+           return comBill;
+        }
+
         [HttpGet]
-       public ActionResult SaveUpdateBill(int id)
+        public ActionResult SaveUpdateBill(int id)
         {
             Com_Bill_DTO item = new Com_Bill_DTO();
             CustomerMst cust;
-                if(User.IsInRole("Admin"))
+            if (User.IsInRole("Admin"))
             {
                 cust = _db.CustomerMsts.FirstOrDefault(a => a.pk_Custid == id);
             }
             else
             {
-                cust = _db.CustomerMsts.FirstOrDefault(a => a.pk_Custid == id && a.Username==User.Identity.Name);
+                cust = _db.CustomerMsts.FirstOrDefault(a => a.pk_Custid == id && a.Username == User.Identity.Name);
             }
+            item = GetPageData();
             item.CustomerMst = cust;
             return View(item);
         }
