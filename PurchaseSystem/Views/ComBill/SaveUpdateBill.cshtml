@@ -5,35 +5,63 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section scripts{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/start/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#txtItemSearch').autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '../../ComBill/GetProductList',
+                        type: 'Get',
+                        dataType: 'JSON',
+                        data: { productName: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.ProductName, value: item.productId }
+                            }));
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+}
+
 <h2>SaveUpdateBill</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-       
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       
+
         <div class="alert alert-dismissible alert-success" style="height:50px">
             <div class="col-md-6">
                 <strong>
-                    Customer Name : @Html.DisplayFor(a => a.CustomerMst.Name) 
+                    Customer Name : @Html.DisplayFor(a => a.CustomerMst.Name)
                 </strong>
             </div>
             <div class="col-md-6">
                 <strong>
                     Customer Mobile No : @Html.DisplayFor(a => a.CustomerMst.MobNo)
-                </strong> 
+                </strong>
             </div>
 
         </div>
-                
+
         <div class="form-group">
             @Html.LabelFor(model => model.Fk_ProductId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Fk_ProductId,new SelectList(Model.ProductList, "productId", "ProductName"), "--Select product--", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Fk_ProductId,new SelectList(Model.ProductList, "productId", "ProductName"),
+               "--Select product--", new { @class = "form-control" } )
                 @Html.ValidationMessageFor(model => model.Fk_ProductId, "", new { @class = "text-danger" })
+                <input type="text" id="txtItemSearch" placeholder="Search Product" class="form-control" />
             </div>
         </div>
 

@@ -42,6 +42,25 @@ namespace PurchaseSystem.Controllers
            return comBill;
         }
 
+
+        public JsonResult GetProductList(string productName)
+        {
+            IEnumerable<ProductDDD_DTO> prodList=  new List<ProductDDD_DTO>();
+            if (User.IsInRole("Admin"))
+            {
+                 prodList = from productList in _db.ProductMsts
+                               select new ProductDDD_DTO
+                               {
+                                   productId = productList.pk_ProductId,
+                                   ProductName = productList.ProductName
+                               };
+               
+
+
+            }
+            return Json(prodList, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public ActionResult SaveUpdateBill(int id)
         {
