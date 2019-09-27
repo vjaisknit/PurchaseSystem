@@ -48,7 +48,8 @@ namespace PurchaseSystem.Controllers
             IEnumerable<ProductDDD_DTO> prodList=  new List<ProductDDD_DTO>();
             if (User.IsInRole("Admin"))
             {
-                 prodList = from productList in _db.ProductMsts
+                prodList = from productList in _db.ProductMsts
+                           where productList.ProductName.Contains(productName)
                                select new ProductDDD_DTO
                                {
                                    productId = productList.pk_ProductId,
@@ -60,6 +61,15 @@ namespace PurchaseSystem.Controllers
             }
             return Json(prodList, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult CalculatePrice(int selectedProductId,double countOrWeight )
+        {
+            ProductMst product = _db.ProductMsts.FirstOrDefault(a => a.pk_ProductId == selectedProductId);
+            double price = countOrWeight * product.sellingUpToPrice;
+
+            return Json(price, JsonRequestBehavior.AllowGet);
+        }
+
 
         [HttpGet]
         public ActionResult SaveUpdateBill(int id)

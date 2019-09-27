@@ -24,9 +24,30 @@
                             }));
                         }
                     });
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+                    $("#txtItemSearch").val('');
+                    $('#Fk_ProductId').val(ui.item.value);
                 }
             });
+
+            $('#prodQuantity').change(function () {
+                $.ajax({
+                    url: '../../ComBill/CalculatePrice',
+                    type: 'Get',
+                    dataType: 'JSON',
+                    data: { selectedProductId: $('#Fk_ProductId').val(), countOrWeight: $('#prodQuantity').val() },
+                    success: function (data) {
+                        $('#price').val(data);
+                    },
+                    error: function (err) {
+                        alert(JSON.stringify(err));
+                    }
+                });
+            });
         });
+
     </script>
 
 }
