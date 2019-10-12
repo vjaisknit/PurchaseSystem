@@ -202,6 +202,7 @@
     <Compile Include="Common\CustomerMst.cs" />
     <Compile Include="Common\CustomRoles.cs" />
     <Compile Include="Common\ModuleMst.cs" />
+    <Compile Include="Common\ProductListForBill.cs" />
     <Compile Include="Common\ProductMst.cs" />
     <Compile Include="Common\ProductTypeMst.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -244,6 +245,14 @@
     <Compile Include="Migrations\201901051540548_addCustomer.cs" />
     <Compile Include="Migrations\201901051540548_addCustomer.Designer.cs">
       <DependentUpon>201901051540548_addCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910050353481_AddProductListForBill.cs" />
+    <Compile Include="Migrations\201910050353481_AddProductListForBill.Designer.cs">
+      <DependentUpon>201910050353481_AddProductListForBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910050404569_ChangeInProductListForBill_CangeUserdataType.cs" />
+    <Compile Include="Migrations\201910050404569_ChangeInProductListForBill_CangeUserdataType.Designer.cs">
+      <DependentUpon>201910050404569_ChangeInProductListForBill_CangeUserdataType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -537,6 +546,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901051540548_addCustomer.resx">
       <DependentUpon>201901051540548_addCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910050353481_AddProductListForBill.resx">
+      <DependentUpon>201910050353481_AddProductListForBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910050404569_ChangeInProductListForBill_CangeUserdataType.resx">
+      <DependentUpon>201910050404569_ChangeInProductListForBill_CangeUserdataType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

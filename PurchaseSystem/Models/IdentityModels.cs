@@ -35,5 +35,6 @@ namespace PurchaseSystem.Models
         public DbSet<ProductMst> ProductMsts { get; set; }
         public DbSet<ModuleMst> ModuleMsts { get; set; }
         public DbSet<CustomerMst> CustomerMsts { get; set; }
+        public DbSet<ProductListForBill> ProductListForBills { get; set; }
     }
 }

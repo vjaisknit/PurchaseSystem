@@ -35,34 +35,54 @@ namespace PurchaseSystem.Controllers
                                    ProductName = productList.ProductName
                                };
                 comBill.ProductList = prodList.ToList();
-               
 
             }
-            
-           return comBill;
-        }
-
-
-        public JsonResult GetProductList(string productName)
-        {
-            IEnumerable<ProductDDD_DTO> prodList=  new List<ProductDDD_DTO>();
-            if (User.IsInRole("Admin"))
+            else
             {
-                prodList = from productList in _db.ProductMsts
-                           where productList.ProductName.Contains(productName)
+                var prodList = from productList in _db.ProductMsts
+                               where productList.username == User.Identity.Name
                                select new ProductDDD_DTO
                                {
                                    productId = productList.pk_ProductId,
                                    ProductName = productList.ProductName
                                };
-               
+                comBill.ProductList = prodList.ToList();
+            }
+
+            return comBill;
+        }
 
 
+        public JsonResult GetProductList(string productName)
+        {
+            IEnumerable<ProductDDD_DTO> prodList = new List<ProductDDD_DTO>();
+            if (User.IsInRole("Admin"))
+            {
+                prodList = from productList in _db.ProductMsts
+                           where productList.ProductName.Contains(productName)
+                           select new ProductDDD_DTO
+                           {
+                               productId = productList.pk_ProductId,
+                               ProductName = productList.ProductName
+                           };
+
+
+
+            }
+            else
+            {
+                prodList = from productList in _db.ProductMsts
+                           where productList.ProductName.Contains(productName) 
+                           select new ProductDDD_DTO
+                           {
+                               productId = productList.pk_ProductId,
+                               ProductName = productList.ProductName
+                           };
             }
             return Json(prodList, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CalculatePrice(int selectedProductId,double countOrWeight )
+        public JsonResult CalculatePrice(int selectedProductId, double countOrWeight)
         {
             ProductMst product = _db.ProductMsts.FirstOrDefault(a => a.pk_ProductId == selectedProductId);
             double price = countOrWeight * product.sellingUpToPrice;
@@ -88,7 +108,19 @@ namespace PurchaseSystem.Controllers
             item.CustomerMst = cust;
             return View(item);
         }
+        [HttpPost]
+        public ActionResult SaveUpdateBill(Com_Bill_DTO billData)
+        {
+            ProductListForBill productDetail = new ProductListForBill();
+            productDetail.username = User.Identity.Name;
+            productDetail.fk_custId = billData.CustomerMst.pk_Custid;
+            productDetail.Fk_ProductId = billData.Fk_ProductId;
+            productDetail.productQuantity = billData.prodQuantity;
+            productDetail.price = billData.price;
+            _db.ProductListForBills.Add(productDetail);
+            _db.SaveChanges();
+            return View();
 
-
+        }
     }
 }
